@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=2">
+<title>Sistema Controle Predial - Gerenciar Empresa</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+.navbar-brand {
+	-ms-user-select: none;
+	font-family: "Garrison Light Sans";
+	font-size: 25px;
+}
+
+.container {
+	border-radius: 10px;
+	background-color: #F8F8FF;
+	margin: 40px 10px;
+	display: none;
+}
+
+body {
+	background-color: #4F4F4F;
+}
+
+h3 {
+	background-color: #1C1C1C;
+	color: #9C9C9C;
+	border-radius: 10px;
+	font-family: "Garrison Light Sans";
+	padding: 10px 2px;
+}
+
+label {
+	font-family: "Garrison Light Sans";
+}
+
+#salvarEmpresa {
+	float: right;
+	margin: 0 10px;
+}
+
+#cancelar {
+	float: right;
+}
+
+@font-face {
+	font-family: "Garrison Light Sans";
+	src: url("fonts/Garrison Light Sans.ttf") format("truetype");
+}
+</style>
+
+<script type="text/javascript">
+	function cadastrar() {
+		var display = document.getElementById("formularioCadastrar").style.display;
+		if (display == "none")
+			document.getElementById("formularioCadastrar").style.display = 'block';
+		else
+			document.getElementById("formularioCadastrar").style.display = 'none';
+	}
+</script>
+
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Gerenciar Empresa</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a class="navbar-brand" onclick="cadastrar()">►Cadastrar</a>
+					</li>
+					<li><a class="navbar-brand" href="index.html">►Consultar</a></li>
+					<li><a class="navbar-brand" href="index.html">►Atualizar</a></li>
+					<li><a class="navbar-brand" href="index.html">►Excluir</a></li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="formularioCadastrar" class="container">
+		<form class="form-inline" method="post" action="gerenciarEmpresa">
+
+			<h3 class="page-header">•Razão Social</h3>
+
+			<div class="form-group">
+				<label for="nome_empresa">Nome: </label> <input id="nome_empresa"
+					name="nomeEmpresa" type="text" class="form-control" required
+					maxlength="100">
+			</div>
+
+			<div class="form-group">
+
+				<label for="cnpj_empresa">CNPJ: </label> <input id="cnpj_empresa"
+					name="cnpjEmpresa" type="text" class="form-control" required
+					maxlength="100">
+			</div>
+
+			<h3 class="page-header">•Funcionamento</h3>
+
+
+			<div class="form-group">
+
+				<label for="horario_inicio">Das </label> <input id="horario_inicio"
+					name="horarioInicio" type="text" class="form-control" required
+					maxlength="100">
+
+			</div>
+
+			<div class="form-group">
+
+				<label for="horario_fim">até </label> <input id="horario_fim"
+					name="horarioFim" type="text" class="form-control" requered
+					maxlength="100">
+
+			</div>
+
+			<h3 class="page-header">•Ar-Condicionado</h3>
+
+			<div class="form-group">
+
+				<label for="horario_inicio">Das</label> <input id="horario_inicio"
+					name="horarioInicio" type="text" class="form-control" required
+					maxlength="100">
+
+			</div>
+
+			<div class="form-group">
+				<label for="horario_fim">até </label> <input id="horario_fim"
+					name="horarioFim" type="text" class="form-control" required
+					maxlength="100">
+			</div>
+
+			<div class="form-group">
+				<label for="temperaturaAr">Temperatura: </label> <input
+					id="temperaturaAr" name="temperatura_ar" type="number"
+					class="form-control" required maxlength="2">
+			</div>
+			<br> <br>
+			<button href="index.html" class="btn btn-default"
+				onclick="cadastrar()" id="cancelar">Cancelar</button>
+
+			<button type="submit" class="btn btn-primary" name="opcoes"
+				value="cadastrar" id="salvarEmpresa">Salvar Empresa</button>
+
+			<br> <br> <br>
+
+		</form>
+	</div>
+
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="br">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device=width, initial-scale=1">
+<title>Empresa</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+
+<style>
+#formularioCadastrar {
+	display: none;
+	margin: 20px;
+}
+
+#formularioConsultar {
+	display: none;
+	margin: 20px;
+}
+
+#cadastrarEmpresa {
+	display: none;
+}
+
+#formularioExcluir {
+	display: none;
+	margin: 20px;
+}
+
+#formularioAtualizar {
+	display: none;
+	margin: 20px;
+}
+
+h4 {
+	margin: 18px;
+}
+
+#navbarSuperior {
+	padding: 15px;
+	margin: 20px;
+	position: relative;
+}
+
+#grupoBotoes {
+	padding: 5px;
+}
+
+#cadastrarEmpresa {
+	float: left 10%;
+}
+</style>
+
+<script type="text/javascript">
+	var menuAtual = null;
+
+	function Cadastrar() {
+
+		anterior = menuAtual;
+		menuAtual = "cadastro";
+
+		var botaocadastrar = document.getElementById("cadastrarEmpresa");
+		botaocadastrar.style.display = 'block';
+
+		var display = document.getElementById("formularioCadastrar").style.display;
+
+		if (anterior != null) {
+			document.getElementById("formularioConsultar").style.display = 'none';
+			document.getElementById("formularioAtualizar").style.display = 'none';
+			document.getElementById("formularioExcluir").style.display = 'none';
+		}
+
+		if (display == "none")
+			document.getElementById("formularioCadastrar").style.display = 'block';
+		else
+			document.getElementById("formularioCadastrar").style.display = 'none';
+
+	}
+
+	function Consultar() {
+
+		anterior = menuAtual;
+		menuAtual = "consultar";
+
+		var display = document.getElementById("formularioConsultar").style.display;
+
+		if (anterior != null) {
+			document.getElementById("formularioCadastrar").style.display = 'none';
+			document.getElementById("formularioAtualizar").style.display = 'none';
+			document.getElementById("formularioExcluir").style.display = 'none';
+		}
+
+		if (display == "none") {
+			document.getElementById("formularioConsultar").style.display = 'block';
+		} else
+			document.getElementById("formularioConsultar").style.display = 'none';
+	}
+
+	function Atualizar() {
+
+		anterior = menuAtual;
+		menuAtual = "atualizar";
+
+		var display = document.getElementById("formularioAtualizar").style.display;
+
+		if (anterior != null) {
+			document.getElementById("formularioCadastrar").style.display = 'none';
+			document.getElementById("formularioConsultar").style.display = 'none';
+			document.getElementById("formularioExcluir").style.display = 'none';
+		}
+
+		if (display == "none") {
+			document.getElementById("formularioAtualizar").style.display = 'block';
+		} else
+			document.getElementById("formularioAtualizar").style.display = 'none';
+
+	}
+
+	function Excluir() {
+		anterior = menuAtual;
+		menuAtual = "excluir";
+
+		var display = document.getElementById("formularioExcluir").style.display;
+
+		if (anterior != null) {
+			document.getElementById("formularioCadastrar").style.display = 'none';
+			document.getElementById("formularioConsultar").style.display = 'none';
+			document.getElementById("formularioAtualizar").style.display = 'none';
+		}
+
+		if (display == "none") {
+			document.getElementById("formularioExcluir").style.display = 'block';
+		} else
+			document.getElementById("formularioExcluir").style.display = 'none';
+	}
+</script>
+</head>
+<body>
+	<nav id="navbarSuperior" class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">Empresa</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+
+				<div id="grupoBotoes" class="btn-group" role="group"
+					aria-label="...">
+					<button class="btn btn-default" type="button" onclick="Cadastrar()">
+						<span class="glyphicon glyphicon-file"></span> Criar
+					</button>
+					<button class="btn btn-default" type="button" onclick="Consultar()">
+						<span class="glyphicon glyphicon-search"></span> Buscar
+					</button>
+					<button class="btn btn-default" type="button" onclick="Atualizar()">
+						<span class="glyphicon glyphicon-repeat"></span> Alterar
+					</button>
+					<button class="btn btn-default" type="button" onclick="Excluir()">
+						<span class="glyphicon glyphicon-trash"></span> Excluir
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="panel panel-primary" id="formularioCadastrar">
+		<div class="panel-heading">
+			<h3 class="panel-title" id="tituloForm">Criar Empresa</h3>
+		</div>
+
+		<div class="panel-body">
+			<form action="empresa" method="post">
+
+				<!--Campos dados sociais-->
+
+				<div class="row">
+
+					<h4>Dados Sociais</h4>
+
+					<div class="form-group col-md-6">
+						<label for="Cnpj">CNPJ:</label> <input class="form-control"
+							id="Cnpj" name="cnpj" type="text" />
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="razaoSocial">Nome:</label> <input class="form-control"
+							id="razaoSocial" name="razao_social" type="text" />
+					</div>
+
+				</div>
+
+				<!-- Fecha campos sociais -->
+
+				<div class="row">
+
+					<h4>Dados Funcionamento</h4>
+
+					<div class="form-group col-md-6">
+						<label for="horarioInicio">Início:</label> <input
+							class="form-control" id="horarioInicio" name="horario_Inicio"
+							type="Time" />
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="horarioFim">Fim:</label> <input class="form-control"
+							id="horarioFim" name="horario_Fim" type="Time" />
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<h4>Dados Temperatura</h4>
+
+					<div class="form-group col-sm-4">
+						<label for="horarioArInicio">Início do Funcionamento(Ar):</label>
+						<input class="form-control" id="horarioArInicio"
+							name="horario_ArInicio" type="Time" />
+					</div>
+
+					<div class="form-group col-sm-4">
+						<label for="horarioArFim">Fim do Funcionamento(Ar):</label> <input
+							class="form-control" id="horarioArFim" name="horario_ArFim"
+							type="Time" />
+					</div>
+
+					<div class="form-group col-sm-4">
+						<label for="temperaturaAr">Temperatura: </label> <input
+							class="form-control" id="temperaturaAr" name="Artemperatura"
+							type="number" />
+					</div>
+
+				</div>
+
+				<input id="cadastrarEmpresa" class="btn btn-default" type="submit"
+					name="opcao" value="Salvar Empresa" />
+
+			</form>
+		</div>
+	</div>
+
+	<div class="panel panel-primary" id="formularioConsultar">
+		<div class="panel-heading">
+			<h3 class="panel-title" id="tituloForm">Buscar Empresa</h3>
+		</div>
+		<div class="panel-body">
+
+
+			<form action="empresa" method="post">
+				<div class="row">
+
+					<div class="form-group col-sm-4">
+						<label for="cnpj">Digite CNPJ da empresa: </label> <input
+							class="form-control" id="cnpj" type="text" name="cnpj" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-sm-4">
+						<input class="btn btn-default" id="consultarEmpresa" type="submit"
+							name="opcao" value="Consultar Empresa" />
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+
+	<div class="panel panel-primary" id="formularioExcluir">
+		<div class="panel-heading">
+			<h3 class="panel-title" id="tituloForm">Excluir Empresa</h3>
+		</div>
+		<div class="panel-body">
+
+
+			<form action="empresa" method="post">
+				<div class="row">
+
+					<div class="form-group col-sm-4">
+						<label for="cnpj">Digite CNPJ da empresa: </label> <input
+							class="form-control" id="cnpj" type="text" name="cnpj" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-sm-4">
+
+						<input class="btn btn-default" id="excluirEmpresa" type="submit"
+							name="opcao" value="Excluir Empresa" />
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+
+
+	<div class="panel panel-primary" id="formularioAtualizar">
+		<div class="panel-heading">
+			<h3 class="panel-title" id="tituloForm">Atualizar Empresa</h3>
+		</div>
+
+		<div class="panel-body">
+			<form action="empresa" method="post">
+
+				<!--Campos dados sociais-->
+
+				<div class="row">
+
+					<h4>Dados Sociais</h4>
+
+					<div class="form-group col-md-6">
+						<label for="Cnpj">CNPJ:</label> <input class="form-control"
+							id="Cnpj" name="cnpj" type="text" />
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="razaoSocial">Nome:</label> <input class="form-control"
+							id="razaoSocial" name="razao_social" type="text" />
+					</div>
+
+				</div>
+
+				<!-- Fecha campos sociais -->
+
+				<div class="row">
+
+					<h4>Dados Funcionamento</h4>
+
+					<div class="form-group col-md-6">
+						<label for="horarioInicio">Início:</label> <input
+							class="form-control" id="horarioInicio" name="horario_Inicio"
+							type="Time" />
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="horarioFim">Fim:</label> <input class="form-control"
+							id="horarioFim" name="horario_Fim" type="Time" />
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<h4>Dados Temperatura</h4>
+
+					<div class="form-group col-sm-4">
+						<label for="horarioArInicio">Início do Funcionamento(Ar):</label>
+						<input class="form-control" id="horarioArInicio"
+							name="horario_ArInicio" type="Time" />
+					</div>
+
+					<div class="form-group col-sm-4">
+						<label for="horarioArFim">Fim do Funcionamento(Ar):</label> <input
+							class="form-control" id="horarioArFim" name="horario_ArFim"
+							type="Time" />
+					</div>
+
+					<div class="form-group col-sm-4">
+						<label for="temperaturaAr">Temperatura: </label> <input
+							class="form-control" id="temperaturaAr" name="Artemperatura"
+							type="number" />
+					</div>
+
+				</div>
+
+				<input class="btn btn-default" id="atualizarEmpresa" type="submit"
+					name="opcao" value="Atualizar" />
+
+			</form>
+		</div>
+	</div>
+
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
